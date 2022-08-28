@@ -1,0 +1,34 @@
+.feild{
+    width: 75%
+  }
+  
+  .passwordFeild{
+    width: 75%;
+    
+  
+  }
+  .signupFeild{
+    width: 25%;
+  }
+  .loginBtn{
+      background-color: green;
+      color: white;
+      width: 300px;
+      padding: 15px 0px;
+      border: 1px solid green;
+  border-radius: 40px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+      
+  }
+  .authTitle{
+    text-align: center;
+    color: green;
+    font-weight: bold;
+
+  }
+  .loginBtn:hover{
+   background-color: green;
+    
+  }

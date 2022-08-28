@@ -1,0 +1,39 @@
+.cardImage {
+  width: 79%;
+  height:auto;
+/* padding: 10px;   */
+}
+.cardPaper {
+  border: 1px solid black;
+}
+.cardTextArea {
+}
+.cardText {
+  color: black;
+  line-height: normal;
+  /* text-align: center; */
+-webkit-line-clamp: 1;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+  overflow: hidden;
+
+}
+.icon {
+  color: black;
+  /* padding: 10px;   */
+
+  border-radius: 30px;
+}
+.icon:hover {
+  color: tomato;
+  
+ 
+}
+.date {
+  font-size: 14px;
+  color: tomato;
+  line-height: 0px;
+  text-align: end;
+padding: 20px;
+margin-left: 20px;
+}

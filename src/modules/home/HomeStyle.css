@@ -1,0 +1,29 @@
+
+.heading{
+      color: rgb(210, 210, 210);
+    font-weight: bold;
+    font-family: 'Courier New';
+    text-decoration: underline;
+    padding: 20px;
+   
+    border-radius: 5px;
+    background-image: linear-gradient(to right, red , rgb(54, 54, 52));
+}
+.heading:hover{
+    color: white;
+    text-decoration: none;
+  
+    font-family: 'Courier New',
+}
+.bannerImg{
+  width: 100%;
+  padding-top: 30px; ;
+  margin-top: 50px;
+  min-height: 200px;
+}
+@media screen and (max-width: 480px) {
+    .formSection {
+ padding-left: 30px;
+
+    }
+  }
