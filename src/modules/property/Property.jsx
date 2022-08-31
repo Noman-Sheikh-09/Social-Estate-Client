@@ -5,6 +5,7 @@ import { Grid } from "@mui/material";
 import ItemCard from "../../components/itemCard/ItemCard";
 import UseProperty from "./UseProperty";
 import UseHome from "../home/UseHome";
+import CommondCard from "../../components/commondCard/CommondCard";
 
 export default function Propery() {
   const { arrayData } = UseProperty();
@@ -31,10 +32,14 @@ export default function Propery() {
       
               {arrayData?.data?.map((singleItem) => {
                 return (
-                  <ItemCard
-                    singleItem={singleItem}
-                    key={singleItem?._id}
-                    // ctaUpdateHandler={ctaUpdateHandler}
+                  // <ItemCard
+                  //   singleItem={singleItem}
+                  //   key={singleItem?._id}
+                  //   // ctaUpdateHandler={ctaUpdateHandler}
+                  // />
+
+                  <CommondCard singleItem={singleItem}
+                  key={singleItem?._id}
                   />
                 );
               })}

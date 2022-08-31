@@ -48,8 +48,8 @@ dispatch(doLogout())
             <Container>
 
             <Box sx={{ p: 1 }}>
-              <Paper elevation={5} style={{ width: "100%", height: "auto" ,borderRadius:"20px"}}>
-                <div className="profileContainer">
+              <Paper elevation={5} style={{ width: 300, height: "auto" ,borderRadius:5}}>
+                <div style={{paddingLeft:20,paddingTop:10}}>
                 <small>Hello</small>
                     <h3>Welcome</h3>
                     <p>{userName?.email}</p>

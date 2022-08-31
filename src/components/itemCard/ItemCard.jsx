@@ -51,7 +51,7 @@ export default function ItemCard({ singleItem, ctaUpdateHandler }) {
       <Card
         sx={{
           minWidth: "90%",
-         
+         marginTop:5,
           borderRadius: "30px",
           backgroundColor: "grey",
         }}

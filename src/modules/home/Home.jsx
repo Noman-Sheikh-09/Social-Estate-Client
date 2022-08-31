@@ -5,7 +5,6 @@ import "./HomeStyle.css";
 import ItemCard from "../../components/itemCard/ItemCard";
 import BannerImage from "../../assets/banner.webp";
 import UseHome from "./UseHome";
-import Slider from "../../components/Slider";
 import { One } from "../../components/one/One";
 import { Link } from "react-router-dom";
 export default function Home() {

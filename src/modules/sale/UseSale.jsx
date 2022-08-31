@@ -12,6 +12,7 @@ export default function UseSale() {
     category: "",
     location:"",
     phone:"",
+    userId:"",
     
   });
   console.log(postData);

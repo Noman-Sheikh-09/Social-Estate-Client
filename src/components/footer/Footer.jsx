@@ -1,18 +1,9 @@
 import React from "react";
-import FooterImage from '../../assets/clarity.png'
+import FooterImage from "../../assets/clarity.png";
 export default function Footer() {
- 
   return (
-    <div
-      
-    >
-    <div>
-    <img src={FooterImage} alt="" style={{
-        width: "100%",
-        height: "auto",
-        
-      }} />
-    </div>
+    <div style={{width:'100%',height:200,backgroundColor:"#040e2b"}}>
+     
     </div>
   );
 }

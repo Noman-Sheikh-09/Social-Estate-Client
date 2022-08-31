@@ -22,6 +22,7 @@ import Chelet from "../modules/categories/Chelet";
 import Villa from "../modules/categories/Villa";
 import Studio from "../modules/categories/Studio";
 import Propery from "../modules/property/Property";
+import Office from "../modules/categories/Office";
 
 export default function Routing() {
   const dispatch = useDispatch();
@@ -61,13 +62,16 @@ export default function Routing() {
           <CartScreen />
         </PrivateRouting>} />
         <Route path="/properties" element={<Propery />} />
+        <Route path="/office" element={<Office />} />
         <Route path="/house" element={<House />} />
         <Route path="/appartment" element={<Appartment />} />
         <Route path="/plots" element={<Plots />} />
         <Route path="/chelet" element={<Chelet />} />
+        <Route path="/villa" element={<Villa />} />
+        <Route path="/studio" element={<Studio />} />
       </Routes>
       <GoTopButton />
-      <Footer />
+      <Footer   />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { ActionTypes } from "@mui/base";
 export default function UseProperty() {
   // const [{arrayData}] = UseHome();
   const arrayData = useSelector((state) => state.TaskReducer.tasks);
+const user = useSelector((state)=> state.AuthReducer.user);
 console.log('data in myStore',arrayData);
   const dispatch = useDispatch();
  
