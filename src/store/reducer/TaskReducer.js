@@ -18,15 +18,20 @@ export const TaskReducer = (state = initialState, action) => {
       };
     }
     case "DELETE_TASK": {
-     let deletedData =  state.tasks.filter(
-        (item) => item.id != action.payload
-      );
+      console.log("id in delete reducer", action.payload);
+      let data= state.tasks;
+      console.log('data in redcuer',data);
+      let deletedData = data?.data?.filter((item) => {
+        if (item._id !== action.payload) {
+          return item;
+        }
+      });
+console.log('deletdData', deletedData);
       return {
         ...state,
         tasks: deletedData,
       };
     }
-  
 
     default:
       return state;

@@ -18,7 +18,7 @@ import UseCommonCard from "./UseCommonCard";
 
 
 export default function CommondCard({singleItem}) {
-    const {ctaDeleteHandler} = UseCommonCard()
+    const {ctaDeleteHandler,addFavouriteHandler} = UseCommonCard()
     const [quantity, setQuantity] = useState("1");
     const [open, setOpen] = useState(false);
     const cartCount = useSelector((state) => state.CartReducer.cartItems);
@@ -60,6 +60,7 @@ export default function CommondCard({singleItem}) {
         image={singleItem?.imageUrl}
         alt="green iguana"
         onClick={handleOpen}
+        style={{cursor:'pointer'}}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -71,7 +72,7 @@ export default function CommondCard({singleItem}) {
       </CardContent>
       <CardActions>
         <Button size="small" onClick={()=>ctaDeleteHandler(singleItem._id)}>Delete</Button>
-        <Button size="small"> <FavoriteIcon /> </Button>
+        <Button size="small" onClick={() => addFavouriteHandler(singleItem)}> <FavoriteIcon /> </Button>
       </CardActions>
     </Card>
 

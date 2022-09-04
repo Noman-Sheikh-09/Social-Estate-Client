@@ -10,6 +10,8 @@ import {
   TextField,
 } from "@mui/material";
 import "./Style.css";
+import Footer from "../../components/footer/Footer";
+
 export default function Sale() {
   const [{ postData, setPostData, ctaSubmitHandler, uploadImageHandler }] =
     UseSale();
@@ -20,13 +22,12 @@ export default function Sale() {
         style={{
           height: "100vh",
           borderRadius: "30px",
-          marginTop:'5%'
+          marginTop: "5%",
         }}
       >
-        <h3 style={{ padding: "10px", textAlign: "center", fontSize: 30 }}>
-          {" "}
+        <h1 style={{ padding: "10px", textAlign: "center", color: "#003366" }}>
           Sale Your Property
-        </h3>
+        </h1>
         <div
           style={{
             display: "flex",
@@ -59,7 +60,7 @@ export default function Sale() {
               }
             />
 
-            <div style={{  }}>
+            <div style={{}}>
               <TextField
                 placeholder="Price"
                 variant="standard"
@@ -70,10 +71,7 @@ export default function Sale() {
                   setPostData({ ...postData, price: e.target.value })
                 }
               />
-              <FormControl
-                variant="standard"
-                sx={{ minWidth: "100%" }}
-              >
+              <FormControl variant="standard" sx={{ minWidth: "100%" }}>
                 <InputLabel id="demo-simple-select-standard-label">
                   Category
                 </InputLabel>
@@ -98,10 +96,7 @@ export default function Sale() {
                 </Select>
               </FormControl>
             </div>
-            <FormControl
-              variant="standard"
-              sx={{  minWidth: "100%" }}
-            >
+            <FormControl variant="standard" sx={{ minWidth: "100%" }}>
               <InputLabel id="demo-simple-select-standard-label">
                 Location
               </InputLabel>
@@ -124,7 +119,7 @@ export default function Sale() {
                 <MenuItem value="Hydrabad">Hydrabad</MenuItem>
               </Select>
             </FormControl>
-             <TextField
+            <TextField
               placeholder="Phone Number"
               variant="standard"
               style={{ marginTop: "10px" }}
@@ -140,7 +135,7 @@ export default function Sale() {
             color="inherit"
             style={{
               marginTop: "30px",
-              backgroundColor: " green",
+              backgroundColor: " #003366",
               color: "white",
               paddingLeft: 30,
               paddingRight: 30,
@@ -151,6 +146,7 @@ export default function Sale() {
           </Button>
         </div>
       </Paper>
+      <Footer />
     </div>
   );
 }

@@ -4,15 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { addCart, deleteCart } from "../../store/action/CartAction";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function CartScreen() {
   const cartCount = useSelector((state) => state.CartReducer.cartItems);
   const dispatch = useDispatch();
-// console.log('',cartCount);
-const deleteCartItem=(item)=>{
-  dispatch(deleteCart(item))
-}
+  // console.log('',cartCount);
+  const deleteCartItem = (item) => {
+    dispatch(deleteCart(item));
+  };
   return (
     <>
       <Container>
@@ -20,13 +21,13 @@ const deleteCartItem=(item)=>{
           style={{
             textAlign: "center",
             fontSize: "62px",
-            color: "green",
-            textDecoration: "underline",
+            color: "#003366",
+            textDecoration: "underlined",
             padding: "20px",
             paddingTop: "10px",
           }}
         >
-    My Favourites
+          My Favourites
         </h1>
         <Grid container spacing={2} style={{ backgroundColor: "white" }}>
           {cartCount.map((item) => {
@@ -63,18 +64,20 @@ const deleteCartItem=(item)=>{
                       }}
                     >
                       <p
-                        style={{
-                          whiteSpace: "nowrap",
-                          textOverflow: "ellipsis",
-                          overflow: "hidden",
-                        }}
+                        style={
+                          {
+                            // whiteSpace: "nowrap",
+                            // textOverflow: "ellipsis",
+                            // overflow: "hidden",
+                          }
+                        }
                       >
                         {item?.description}
                       </p>
                     </div>
-                    <h2>Rs. {item?.price}</h2>
-                    <h2>Category :  {item?.category}</h2>
-                    <h2>Call :  {item?.phone}</h2>
+                    <p>Rs. {item?.price}</p>
+                    <p>Category : {item?.category}</p>
+                    <p>Call : {item?.phone}</p>
 
                     {/* <div
                       style={{
@@ -104,7 +107,7 @@ const deleteCartItem=(item)=>{
                       />
                     </div>
                   </div> */}
-                  {/* <div
+                    {/* <div
                     style={{
                       display: "flex",
                       alignItems: "start",
@@ -139,18 +142,18 @@ const deleteCartItem=(item)=>{
                     </button> */}
                     <button
                       style={{
-                        color: "white",
-                        backgroundColor: "red",
+                        color: "red",
+                      backgroundColor:"grey",
                         border: "none",
                         padding: "20px 40px",
                         borderRadius: "5px",
                         marginLeft: "20px",
                         cursor: "pointer",
-                        fontSize:'24'
+                        fontSize: 30,
                       }}
-                      onClick={()=>deleteCartItem(item)}
+                      onClick={() => deleteCartItem(item)}
                     >
-                    <DeleteIcon />
+                      <FavoriteIcon />
                     </button>
                   </div>
                 </Grid>

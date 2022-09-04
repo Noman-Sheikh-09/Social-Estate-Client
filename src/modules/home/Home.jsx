@@ -7,6 +7,7 @@ import BannerImage from "../../assets/banner.webp";
 import UseHome from "./UseHome";
 import { One } from "../../components/one/One";
 import { Link } from "react-router-dom";
+import Footer from '../../components/footer/Footer'
 export default function Home() {
   const [{ arrayData, ctaUpdateHandler, postData, onClickUpdateHandler }] =
     UseHome();
@@ -92,6 +93,7 @@ export default function Home() {
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </div>
   );
 }

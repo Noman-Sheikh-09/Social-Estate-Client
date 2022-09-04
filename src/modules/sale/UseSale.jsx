@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { addTask } from "../../store/action/TaskAction";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 export default function UseSale() {
   const [postData, setPostData] = useState({
@@ -11,16 +11,21 @@ export default function UseSale() {
     price: "",
     category: "",
     location:"",
-    phone:"",
-    userId:"",
-    
+    phone:"",    
   });
-  console.log(postData);
-
+  const [userId , setUserId ] = useState("")
+  
+const user = useSelector(state=> state.AuthReducer.user.id)
+console.log( 'user id in sale',user?.id);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+
+  useEffect(() => {
+   setUserId(user)
+  }, [user])
+  
   const uploadImageHandler = async () => {
     const { files } = document.querySelector('input[type="file"]');
     const formData = new FormData();
@@ -51,7 +56,11 @@ export default function UseSale() {
   };
 
   const ctaSubmitHandler = () => {
-    dispatch(addTask(postData, navigate));
+    dispatch(addTask( {...postData,userId}, navigate));
+    console.log({
+      ...postData,userId
+    });
+  
     navigate("/");
     setPostData({
       title: "",
@@ -60,7 +69,7 @@ export default function UseSale() {
       price: "",
       category: "",
       location:"",
-      phone:""
+      phone:"",
     });
   };
 

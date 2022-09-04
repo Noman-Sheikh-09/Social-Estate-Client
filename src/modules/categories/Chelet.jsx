@@ -3,17 +3,25 @@ import React, { useEffect } from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import CommondCard from '../../components/commondCard/CommondCard';
 import { getTask } from '../../store/action/TaskAction';
-
+import { useState } from 'react';
 export default function Chelet() {
   const arrayData = useSelector((state) => state.TaskReducer.tasks);
+  const [filterProduct, setFilterProduct] = useState(arrayData?.data);
   
 const dispatch = useDispatch()
 // const [{arrayData}] = UseHome()
-    console.log('data in house',arrayData);
+    console.log('data in chelet',arrayData);
     useEffect(() => {
      dispatch(getTask())
     }, [])
-    
+    useEffect(() => {
+      const filterArray = arrayData?.data?.filter((item) => {
+        if (item.category == "Chelet" ) {
+          return item;
+        }
+      });
+      setFilterProduct(filterArray);
+    }, [arrayData]);
   return (
     <div>
        <h1 style={{ textAlign: "center", fontSize: "52px" ,marginTop:100}}>Chelet </h1>
@@ -32,7 +40,7 @@ const dispatch = useDispatch()
 
 
 
-      {arrayData?.data?.map((singleItem) => {
+      {filterProduct?.map((singleItem) => {
         return (
           <CommondCard singleItem={singleItem}
           key={singleItem?._id}

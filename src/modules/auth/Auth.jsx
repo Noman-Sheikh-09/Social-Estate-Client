@@ -9,6 +9,8 @@ import {
   Button,
   InputAdornment,
 } from "@mui/material";
+import Footer from '../../components/footer/Footer'
+
 import { Link } from "react-router-dom";
 import "./AuthStyle.css";
 import UseAuth from "./UseAuth";
@@ -34,8 +36,9 @@ export default function Auth() {
           style={{
             width: "100%",
             height: "auto",
-            marginTop: "50px",
+            marginTop: "10%",
             paddingBottom: "30px",
+
           }}
         >
           <Grid container spacing={2}>
@@ -147,6 +150,7 @@ export default function Auth() {
           </Grid>
         </Paper>
       </Container>
+      <Footer />
     </div>
   );
 }

@@ -17,7 +17,7 @@ export default function UseHome() {
   });
   useEffect(() => {
     dispatch(getTask());
-  }, []);
+  }, [arrayData]);
 
   const ctaUpdateHandler = (singleItem) => {
     // console.log(singleItem);

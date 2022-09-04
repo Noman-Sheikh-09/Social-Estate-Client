@@ -13,64 +13,81 @@ import { doLogout } from "../../store/action/AuthAction";
 import Button from "@mui/material/Button";
 import DropDown from "../dropDown/DropDown";
 import HomeIcon from "@mui/icons-material/Home";
+import { useState } from "react";
 export default function Header() {
   const cartCount = useSelector((state) => state.CartReducer.cartItems);
   const user = useSelector((state) => state.AuthReducer);
   console.log(user);
-
+  const [search, setSearch] = useState();
   const dispatch = useDispatch();
 
   return (
     <Box>
       <AppBar
-       
         style={{
           backgroundColor: "white",
-       
         }}
       >
         <Toolbar>
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
               alignItems: "center",
-              width:"100%"
+              width: "100%",
             }}
           >
-            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
-              <HomeIcon style={{ color: "black", fontSize: 40 }} />
+            <Link to="/" style={{ color: "#003366", textDecoration: "none" }}>
+              <HomeIcon style={{ color: "#003366", fontSize: 40 }} />
             </Link>
             <TextField
-              placeholder="Search"
+              placeholder="Search..."
               style={{
                 backgroundColor: "white",
-              borderWidth:2,
+                borderWidth: 2,
                 height: "30px",
-                width:'50%',
-                alignitems:'center',
-                marginBottom:'30px'
+                width: "50%",
+                alignitems: "center",
+                marginBottom: "30px",
               }}
             />
-    
-       
-            <Link to="/sale" style={{ textDecoration: "none", color: "black" }}>
-              <Button color="inherit"> Create </Button>
-            </Link>
-            {user.isUserLoggedIn ? (
-              <DropDown />
-            ) : (
+            <div style={{ display: "flex" }}>
               <Link
-                to="/auth"
-                style={{
-                  color: "black",
-                  textDecoration: "none",
-                  color: "black",
-                }}
+                to="/sale"
+                style={{ textDecoration: "none", color: "black" }}
               >
-                <Button color="inherit">Sign In</Button>
+                <Button
+                  color="inherit"
+                  style={{ backgroundColor: "#003366", color: "White" }}
+                >
+                  {" "}
+                  Create{" "}
+                </Button>
               </Link>
-            )}
+              {user.isUserLoggedIn ? (
+                <DropDown />
+              ) : (
+                <Link
+                  to="/auth"
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  <Button
+                    color="inherit"
+                    style={{
+                      backgroundColor: "#003366",
+                      color: "White",
+                      marginLeft: 20,
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                </Link>
+              )}
+            </div>
           </div>
         </Toolbar>
       </AppBar>

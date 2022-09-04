@@ -8,7 +8,7 @@ import { getTask } from "../../store/action/TaskAction";
 import CommondCard from "../../components/commondCard/CommondCard";
 export default function House() {
   const arrayData = useSelector((state) => state.TaskReducer.tasks);
-  const [filterProduct, setFilterProduct] = useState(arrayData)
+  const [filterProduct, setFilterProduct] = useState([])
 
   const dispatch = useDispatch();
   // const [{arrayData}] = UseHome()
@@ -17,7 +17,15 @@ export default function House() {
     dispatch(getTask());
   }, []);
 
- 
+  useEffect(() => {
+    const filterArray = arrayData?.data?.filter((item) => {
+      if (item.category == "House" ) {
+        return item;
+      }
+    });
+    setFilterProduct(filterArray);
+  }, [arrayData]);
+  console.log("data in House", filterProduct);
 
   return (
     <div>
@@ -29,7 +37,7 @@ export default function House() {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={12}>
             <Grid container spacing={0}>
-              {filterProduct?.data?.map((singleItem) => {
+              {filterProduct?.map((singleItem) => {
                 return (
                   <CommondCard singleItem={singleItem} key={singleItem?._id} />
                 );

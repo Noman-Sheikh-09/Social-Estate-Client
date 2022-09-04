@@ -23,6 +23,7 @@ import Villa from "../modules/categories/Villa";
 import Studio from "../modules/categories/Studio";
 import Propery from "../modules/property/Property";
 import Office from "../modules/categories/Office";
+import PublicRouting from "./PublicRouting";
 
 export default function Routing() {
   const dispatch = useDispatch();
@@ -43,9 +44,10 @@ export default function Routing() {
       <Header />
 
       <Routes>
-        <Route path="/welcome" element={<Welcome />} />
         <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<Auth />} />
+        <Route path="/auth" element={<PublicRouting isUserLoggedIn={isUserLoggedIn}>
+          <Auth />
+        </PublicRouting>} />
 
         <Route
           path="/sale"
@@ -56,12 +58,23 @@ export default function Routing() {
           }
         />
         <Route path="/detail/:id" element={<DetailPage />} />
-        
-        <Route path="/favourite" element={
-          <PrivateRouting isUserLoggedIn={isUserLoggedIn}>
-          <CartScreen />
-        </PrivateRouting>} />
-        <Route path="/properties" element={<Propery />} />
+
+        <Route
+          path="/favourite"
+          element={
+            <PrivateRouting isUserLoggedIn={isUserLoggedIn}>
+              <CartScreen />
+            </PrivateRouting>
+          }
+        />
+        <Route
+          path="/properties"
+          element={
+            <PrivateRouting isUserLoggedIn={isUserLoggedIn}>
+              <Propery />
+            </PrivateRouting>
+          }
+        />
         <Route path="/office" element={<Office />} />
         <Route path="/house" element={<House />} />
         <Route path="/appartment" element={<Appartment />} />
@@ -70,8 +83,7 @@ export default function Routing() {
         <Route path="/villa" element={<Villa />} />
         <Route path="/studio" element={<Studio />} />
       </Routes>
-      <GoTopButton />
-      <Footer   />
+      {/* <Footer /> */}
     </div>
   );
 }

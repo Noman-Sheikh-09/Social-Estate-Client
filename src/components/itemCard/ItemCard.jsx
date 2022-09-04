@@ -15,15 +15,19 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../store/action/CartAction";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import {  toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 export default function ItemCard({ singleItem, ctaUpdateHandler }) {
   const [quantity, setQuantity] = useState("1");
   const [open, setOpen] = useState(false);
   const cartCount = useSelector((state) => state.CartReducer.cartItems);
-
+  const isUserLoggedIn = useSelector(
+    (state) => state.AuthReducer.isUserLoggedIn
+  );
   const dispatch = useDispatch();
   const addCartHandler = (singleItem) => {
     // console.log('item in cart handler', singleItem);
-    dispatch(addCart(singleItem, quantity));
+    dispatch(addCart(singleItem,toast, quantity));
   };
   const handleOpen = () => {
     setOpen(true);
@@ -31,6 +35,9 @@ export default function ItemCard({ singleItem, ctaUpdateHandler }) {
   const handleClose = () => {
     setOpen(false);
   };
+  const onClickHandler =()=>{
+    toast.warning("You Must Have Login")
+  }
 
   const style = {
     position: "absolute",
@@ -65,12 +72,22 @@ export default function ItemCard({ singleItem, ctaUpdateHandler }) {
             {moment(singleItem.createdAt).fromNow()}
           </Typography>
           <CardActions>
-            <IconButton
-              aria-label="cart"
-              onClick={() => addCartHandler(singleItem)}
-            >
-              <FavoriteIcon className="icon" />
-            </IconButton>
+            {isUserLoggedIn?
+             <IconButton
+             aria-label="cart"
+             onClick={() => addCartHandler(singleItem)}
+           >
+             <FavoriteIcon className="icon" />
+           </IconButton>
+           : 
+           <IconButton
+           aria-label="cart"
+           onClick={onClickHandler }
+         >
+           <FavoriteIcon  className="icon" />
+         </IconButton>
+            }
+           
           </CardActions>
         </div>
         <CardContent
