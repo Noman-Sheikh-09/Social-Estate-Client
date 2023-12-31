@@ -7,7 +7,7 @@ import BannerImage from "../../assets/banner.webp";
 import UseHome from "./UseHome";
 import { One } from "../../components/one/One";
 import { Link } from "react-router-dom";
-import Footer from '../../components/footer/Footer'
+import Footer from "../../components/footer/Footer";
 export default function Home() {
   const [{ arrayData, ctaUpdateHandler, postData, onClickUpdateHandler }] =
     UseHome();
@@ -62,7 +62,7 @@ export default function Home() {
               <Grid item md={8}>
                 {arrayData?.data?.map((singleItem) => {
                   return (
-                    <Grid item xs={6} sm={6} md={12} lg={12}>
+                    <Grid item xs={6} sm={6} md={6} lg={6}>
                       <ItemCard
                         singleItem={singleItem}
                         key={singleItem?._id}
@@ -72,21 +72,31 @@ export default function Home() {
                   );
                 })}
               </Grid>
-              <Grid item md={4} >
-                <div style={{position: "sticky", top: 70}}>
-                <h1 style={{textDecoration:'underlined'}}>Categories</h1>
-                {
-                  categories.map((item)=>{
+              <Grid item md={4}>
+                <div style={{ position: "sticky", top: 70 }}>
+                  <h1 style={{ textDecoration: "underlined" }}>Categories</h1>
+                  {categories.map((item) => {
                     return (
-                      <li style={{paddingTop:20,listStyle:'none',cursor:'pointer'}}>
-                        <Link to={item.link} style={{textDecoration:'none',color:'black',fontSize:24}}>
-                      {  item.title}
-
+                      <li
+                        style={{
+                          paddingTop: 20,
+                          listStyle: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <Link
+                          to={item.link}
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            fontSize: 24,
+                          }}
+                        >
+                          {item.title}
                         </Link>
                       </li>
-                    )
-                  })
-                }
+                    );
+                  })}
                 </div>
               </Grid>
             </Grid>

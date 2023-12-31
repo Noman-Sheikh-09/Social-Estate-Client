@@ -15,8 +15,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../store/action/CartAction";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import {  toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function ItemCard({ singleItem, ctaUpdateHandler }) {
   const [quantity, setQuantity] = useState("1");
   const [open, setOpen] = useState(false);
@@ -27,7 +27,7 @@ export default function ItemCard({ singleItem, ctaUpdateHandler }) {
   const dispatch = useDispatch();
   const addCartHandler = (singleItem) => {
     // console.log('item in cart handler', singleItem);
-    dispatch(addCart(singleItem,toast, quantity));
+    dispatch(addCart(singleItem, toast, quantity));
   };
   const handleOpen = () => {
     setOpen(true);
@@ -35,9 +35,9 @@ export default function ItemCard({ singleItem, ctaUpdateHandler }) {
   const handleClose = () => {
     setOpen(false);
   };
-  const onClickHandler =()=>{
-    toast.warning("You Must Have Login")
-  }
+  const onClickHandler = () => {
+    toast.warning("You Must Have Login");
+  };
 
   const style = {
     position: "absolute",
@@ -58,36 +58,31 @@ export default function ItemCard({ singleItem, ctaUpdateHandler }) {
       <Card
         sx={{
           minWidth: "90%",
-         marginTop:5,
-          borderRadius: "30px",
-          backgroundColor: "grey",
+          marginTop: 2,
+          borderRadius: "10px",
         }}
       >
         {/* <Link
         to={`/detail/${singleItem._id}`}
         style={{ textDecoration: "none" }}
       > */}
-        <div >
+        <div>
           <Typography variant="p" color="initial" className="date">
             {moment(singleItem.createdAt).fromNow()}
           </Typography>
           <CardActions>
-            {isUserLoggedIn?
-             <IconButton
-             aria-label="cart"
-             onClick={() => addCartHandler(singleItem)}
-           >
-             <FavoriteIcon className="icon" />
-           </IconButton>
-           : 
-           <IconButton
-           aria-label="cart"
-           onClick={onClickHandler }
-         >
-           <FavoriteIcon  className="icon" />
-         </IconButton>
-            }
-           
+            {isUserLoggedIn ? (
+              <IconButton
+                aria-label="cart"
+                onClick={() => addCartHandler(singleItem)}
+              >
+                <FavoriteIcon className="icon" />
+              </IconButton>
+            ) : (
+              <IconButton aria-label="cart" onClick={onClickHandler}>
+                <FavoriteIcon className="icon" />
+              </IconButton>
+            )}
           </CardActions>
         </div>
         <CardContent
@@ -110,24 +105,24 @@ export default function ItemCard({ singleItem, ctaUpdateHandler }) {
             </Typography>
             <Typography variant="h6" color="secondary" className="cardText">
               Rs.{singleItem?.price}
-            <br />
-          Call:
-          <a href="#">{singleItem?.phone}</a>
-     
+              <br />
+              Call:
+              <a href="#">{singleItem?.phone}</a>
             </Typography>
           </div>
-          <small style={{ color: "black",fontSize:15,fontWeight:400,}}>Categories:{singleItem?.category}</small>
+          <small style={{ color: "black", fontSize: 15, fontWeight: 400 }}>
+            Categories:{singleItem?.category}
+          </small>
           <br />
-         
         </CardContent>
-      
+
         <CardMedia
           component="img"
           alt="Memory Picture"
           height="300"
           image={singleItem?.imageUrl}
           onClick={handleOpen}
-          style={{cursor:'pointer'}}
+          style={{ cursor: "pointer" }}
         />
         {/* </Link> */}
       </Card>
@@ -174,7 +169,8 @@ export default function ItemCard({ singleItem, ctaUpdateHandler }) {
             <small id="child-modal-description">
               Category: &nbsp;
               {singleItem?.category}
-            </small>  <small id="child-modal-description">
+            </small>{" "}
+            <small id="child-modal-description">
               Location: &nbsp;
               {singleItem?.location}
             </small>

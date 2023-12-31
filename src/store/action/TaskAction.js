@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const getTask = () => async (dispatch) => {
   try {
-    const resValue = await axios.get("https://hackathone-server.herokuapp.com/tasks/get");
+    const resValue = await axios.get("http://localhost:4000/tasks/get");
     console.log("action data", resValue.data);
     dispatch({
       type: "GET_TASK",
@@ -20,7 +20,7 @@ export const addTask = (data) => async (dispatch) => {
   try {
     // const baseURL = process.env.REACT_APP_BASEURL;
     // console.log("base url from env", baseURL);
-    const resValue = await axios.post("https://hackathone-server.herokuapp.com/tasks/add", data);
+    const resValue = await axios.post("http://localhost:4000/tasks/add", data);
     // console.log("response after add", resValue.data);
    toast.success("Property Added Successfully")
 
@@ -35,7 +35,7 @@ export const addTask = (data) => async (dispatch) => {
 };
 export const deleteTask = (id) => async (dispatch) => {
   try {
-    await axios.delete(`https://hackathone-server.herokuapp.com/tasks/delete/${id}`);
+    await axios.delete(`http://localhost:4000/tasks/delete/${id}`);
 
     dispatch({
       type: "DELETE_TASK",
@@ -51,7 +51,7 @@ export const updateTask = (data) => async (dispatch) => {
   console.log("update data in action", data);
   try {
     const resValue = await axios.put(
-      `https://hackathone-server.herokuapp.com/tasks/update/{id}`,
+      `http://localhost:4000/tasks/update/{id}`,
       data
     );
 

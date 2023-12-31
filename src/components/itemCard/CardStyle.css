@@ -1,7 +1,7 @@
 .cardImage {
-  width: 79%;
-  height:auto;
-/* padding: 10px;   */
+  width: 100%;
+  height: auto;
+  /* padding: 10px;   */
 }
 .cardPaper {
   border: 1px solid black;
@@ -12,28 +12,26 @@
   color: black;
   line-height: normal;
   /* text-align: center; */
--webkit-line-clamp: 1;
-display: -webkit-box;
--webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-
 }
 .icon {
   color: black;
-  /* padding: 10px;   */
-font-size: 40;
+  font-size: 40;
   border-radius: 30px;
+  margin-top: 0px;
 }
 .icon:hover {
   color: tomato;
-  
- 
 }
 .date {
   font-size: 14px;
   color: tomato;
   line-height: 0px;
   text-align: end;
-padding: 20px;
-margin-left: 20px;
+  padding: 20px;
+  margin-left: 20px;
+  
 }

@@ -5,7 +5,7 @@ export const doSignup = (formData, navigate) => async (dispatch) => {
   //   console.log("data in action", formData);
   try {
     const resValue = await axios.post(
-      "https://hackathone-server.herokuapp.com/users/signup",
+      "http://localhost:4000/users/signup",
       formData
     );
     await window.localStorage.setItem("token", resValue.data.token);
@@ -25,7 +25,7 @@ export const doGetLoggedInUser = (token, navigate) => async (dispatch) => {
   //   console.log("data in action", formData);
   try {
     const resValue = await axios.post(
-      "https://hackathone-server.herokuapp.com/users/getActiveUser",
+      "http://localhost:4000/users/getActiveUser",
       { token: token }
     );
     navigate("/");
@@ -57,7 +57,7 @@ export const doSignin = (formData, navigate) => async (dispatch) => {
     //   console.log("data in action", formData);
     try {
       const resValue = await axios.post(
-        "https://hackathone-server.herokuapp.com/users/signin",
+        "http://localhost:4000/users/signin",
         formData
       );
       await window.localStorage.setItem("token", resValue.data.token);
