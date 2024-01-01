@@ -8,10 +8,11 @@ import UseHome from "./UseHome";
 import { One } from "../../components/one/One";
 import { Link } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
+import Loader from "../../components/loader/Loader";
 export default function Home() {
-  const [{ arrayData, ctaUpdateHandler, postData, onClickUpdateHandler }] =
-    UseHome();
-  console.log("data in home", arrayData);
+  const [
+    { arrayData, ctaUpdateHandler, postData, onClickUpdateHandler, loading },
+  ] = UseHome();
   const categories = [
     {
       title: "House",
@@ -59,20 +60,24 @@ export default function Home() {
           <h1>Here is Something for you </h1>
           <Grid item md={12} xs={12} sm={12}>
             <Grid container spacing={9}>
-              <Grid item md={8}>
-                {arrayData?.data?.map((singleItem) => {
-                  return (
-                    <Grid item xs={6} sm={6} md={6} lg={6}>
-                      <ItemCard
-                        singleItem={singleItem}
-                        key={singleItem?._id}
-                        ctaUpdateHandler={ctaUpdateHandler}
-                      />
-                    </Grid>
-                  );
-                })}
+              <Grid item xs={12} sm={12} md={8}>
+                {loading ? (
+                  <Loader loading={loading} />
+                ) : arrayData?.data?.length > 0 ? (
+                  arrayData?.data?.map((singleItem) => {
+                    return (
+                      <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <ItemCard
+                          singleItem={singleItem}
+                          key={singleItem?._id}
+                          ctaUpdateHandler={ctaUpdateHandler}
+                        />
+                      </Grid>
+                    );
+                  })
+                ) : null}
               </Grid>
-              <Grid item md={4}>
+              <Grid item xs={12} sm={12} md={4}>
                 <div style={{ position: "sticky", top: 70 }}>
                   <h1 style={{ textDecoration: "underlined" }}>Categories</h1>
                   {categories.map((item) => {

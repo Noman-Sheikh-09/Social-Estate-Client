@@ -4,10 +4,10 @@ import { useEffect } from "react";
 import { addTask, getTask, updateTask } from "../../store/action/TaskAction";
 export default function UseHome() {
   const arrayData = useSelector((state) => state.TaskReducer.tasks);
-  // console.log("data in useHmome",arrayData);
+  // console.log("data in useHmome", arrayData?.data);
   const dispatch = useDispatch();
   const [flag, setFlag] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const [postData, setPostData] = useState({
     title: "",
     description: "",
@@ -16,12 +16,12 @@ export default function UseHome() {
     // flag:'false'
   });
   useEffect(() => {
-    dispatch(getTask());
-  }, [arrayData]);
+    dispatch(getTask(setLoading));
+  }, []);
 
   const ctaUpdateHandler = (singleItem) => {
     // console.log(singleItem);
-    setFlag(true)
+    setFlag(true);
     setPostData({
       // ...postData,
       _id: singleItem._id,
@@ -32,7 +32,6 @@ export default function UseHome() {
   };
 
   const onClickUpdateHandler = () => {
-
     dispatch(updateTask(postData));
 
     setPostData({
@@ -40,14 +39,17 @@ export default function UseHome() {
       description: "",
       imageUrl: "",
     });
-    setFlag(false)
+    setFlag(false);
   };
   return [
     {
       arrayData,
       ctaUpdateHandler,
       postData,
-      onClickUpdateHandler,flag,setFlag
+      onClickUpdateHandler,
+      flag,
+      setFlag,
+      loading,
     },
   ];
 }

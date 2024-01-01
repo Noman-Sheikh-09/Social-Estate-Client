@@ -5,6 +5,7 @@ const initialState = {
 export const TaskReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_TASK": {
+      // console.log(action.payload, 'payload');
       return {
         ...state,
         tasks: action.payload,
@@ -19,14 +20,14 @@ export const TaskReducer = (state = initialState, action) => {
     }
     case "DELETE_TASK": {
       console.log("id in delete reducer", action.payload);
-      let data= state.tasks;
-      console.log('data in redcuer',data);
+      let data = state.tasks;
+      console.log('data in redcuer', data);
       let deletedData = data?.data?.filter((item) => {
         if (item._id !== action.payload) {
           return item;
         }
       });
-console.log('deletdData', deletedData);
+      console.log('deletdData', deletedData);
       return {
         ...state,
         tasks: deletedData,

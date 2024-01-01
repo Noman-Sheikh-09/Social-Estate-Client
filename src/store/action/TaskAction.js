@@ -1,28 +1,32 @@
 import axios from "axios";
 
-import {  toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
-export const getTask = () => async (dispatch) => {
+export const getTask = (setLoading) => async (dispatch) => {
   try {
+    setLoading(true)
     const resValue = await axios.get("http://localhost:4000/tasks/get");
-    console.log("action data", resValue.data);
+// console.log(resValue,'resValue');
     dispatch({
       type: "GET_TASK",
       payload: resValue.data,
     });
+    setLoading(false)
+
   } catch (error) {
     console.log("error in reponse", error);
+  } finally {
+    setLoading(false)
   }
 };
 export const addTask = (data) => async (dispatch) => {
-  console.log("data in action", data);
   try {
     // const baseURL = process.env.REACT_APP_BASEURL;
     // console.log("base url from env", baseURL);
     const resValue = await axios.post("http://localhost:4000/tasks/add", data);
     // console.log("response after add", resValue.data);
-   toast.success("Property Added Successfully")
+    toast.success("Property Added Successfully")
 
     dispatch({
       type: "ADD_TASK",

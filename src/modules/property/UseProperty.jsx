@@ -1,35 +1,35 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import UseHome from '../home/UseHome'
-import {getTask} from '../../store/action/TaskAction'
+import UseHome from "../home/UseHome";
+import { getTask } from "../../store/action/TaskAction";
 import { ActionTypes } from "@mui/base";
 export default function UseProperty() {
-  const [filterProduct,setFilterProduct] = useState([])
+  const [filterProduct, setFilterProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   // const [{arrayData}] = UseHome();
   const arrayData = useSelector((state) => state.TaskReducer.tasks);
-const user = useSelector((state)=> state.AuthReducer.user);
-// console.log('data in myStore',arrayData);
+  const user = useSelector((state) => state.AuthReducer.user);
+  // console.log('data in myStore',arrayData);
   const dispatch = useDispatch();
- 
+
   useEffect(() => {
-   const filterUserArray = arrayData?.data?.filter((item)=>{
-      if(item?.userId == user?.id){
-        return item
-    
+    const filterUserArray = arrayData?.data?.filter((item) => {
+      if (item?.userId == user?.id) {
+        return item;
       }
-    })
-setFilterProduct(filterUserArray)
-  }, [arrayData,user])
-  
-  console.log(filterProduct);
+    });
+    setFilterProduct(filterUserArray);
+  }, [arrayData, user]);
 
 
   useEffect(() => {
-    dispatch(getTask());
-  }, [arrayData]);
+    dispatch(getTask(setLoading));
+  }, []);
 
   return {
-    filterProduct
-  }
+    filterProduct,
+    loading,
+  };
 }

@@ -17,7 +17,6 @@ import { useState } from "react";
 export default function Header() {
   const cartCount = useSelector((state) => state.CartReducer.cartItems);
   const user = useSelector((state) => state.AuthReducer);
-  console.log(user);
   const [search, setSearch] = useState();
   const dispatch = useDispatch();
 
